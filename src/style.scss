@@ -1,0 +1,81 @@
+#app {
+  background-image: url("/background.png");
+  background-size: 100% 100%;
+  min-height: 100vh;
+  padding-top: 80px;
+
+  h1 {
+    text-align: center;
+    color: white;
+    font-family: sans-serif;
+    font-size: 40px;
+  }
+
+  .weather__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 70px;
+
+    .weather__wrapper-input-city {
+      background-color: rgba(255, 255, 255, 0.5);
+      padding: 3px;
+      font-size: 18px;
+      border-color: gray;
+      border-width: 0.4px;
+      border-radius: 10px;
+      outline: none;
+      margin-bottom: 10px;
+    }
+
+    .weather__wrapper-input-date {
+      padding: 3px;
+      font-size: 15px;
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #553131;
+      border-color: gray;
+      outline: none;
+      border-width: 0.4px;
+      border-radius: 10px;
+    }
+
+    .weather__wrapper-input-submit {
+      margin-top: 10px;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: rgb(0, 0, 0);
+      font-size: 13px;
+      font-weight: bold;
+      border-color: gray;
+      border-width: 0.4px;
+      border-radius: 10px;
+      padding: 3px 5px;
+    }
+  }
+
+  .weather__day {
+	margin-top: 30px;
+	font-family: sans-serif;
+
+	p {
+		color: white;
+	}
+  }
+
+  .weather__card {
+    width: 100%;
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 7px;
+    background-color: rgba(255, 255, 255, 0.5);
+    overflow-x: scroll;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
