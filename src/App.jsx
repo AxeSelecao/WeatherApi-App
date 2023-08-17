@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import "./App.css";
 import "./style.scss";
+import dateNow from "./services/utils/date/dateNow";
 
 function App() {
   const cityName = useRef();
@@ -8,12 +9,12 @@ function App() {
 
   const [weatherData, setWeatherData] = useState();
 
-  let dateNow = `${new Date(Date.now()).getFullYear()}-${
-    new Date(Date.now()).getMonth() + 1 < 10 ? 0 : ""
-  }${new Date(Date.now()).getMonth() + 1}-${new Date(Date.now()).getDate()}`;
+  console.log(dateNow());
 
   const getPreviousWeatherData = () => {
-    const url = `https://weatherapi-com.p.rapidapi.com/history.json?q=${cityName.current.value}&dt=${date.current.value}&lang=en&end_dt=${dateNow}`;
+    const url = `https://weatherapi-com.p.rapidapi.com/history.json?q=${
+      cityName.current.value
+    }&dt=${date.current.value}&lang=en&end_dt=${dateNow()}`;
     const options = {
       method: "GET",
       headers: {
