@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import dateNow from "../services/utils/date/dateNow";
 import dateDiff from "../services/utils/date/dateDiff";
 import {
   useGetForecastQuery,
@@ -43,8 +42,8 @@ function Carousel() {
   }, [futureWeatherData, prevWeatherData]);
 
   return (
-    <div>
-      {weatherData != undefined ? (
+    <>
+      {weatherData !== undefined && (
         <div className="weather__day">
           <p
             style={{
@@ -75,15 +74,13 @@ function Carousel() {
             {weatherData.day.mintemp_c}°
           </p>
         </div>
-      ) : (
-        <></>
       )}
-      {weatherData != undefined ? (
+      {weatherData !== undefined && (
         <div
           className="weather__card"
           style={{ display: "flex", flexDirection: "row" }}
         >
-          {weatherData != undefined ? (
+          {weatherData !== undefined &&
             weatherData.hour.map((hour) => {
               return (
                 <div
@@ -117,15 +114,10 @@ function Carousel() {
                   {Math.round(hour.temp_c)}°
                 </div>
               );
-            })
-          ) : (
-            <></>
-          )}
+            })}
         </div>
-      ) : (
-        <></>
       )}
-    </div>
+    </>
   );
 }
 

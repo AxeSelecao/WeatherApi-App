@@ -1,4 +1,3 @@
-import "./App.css";
 import "./style.scss";
 import Carousel from "./components/Carousel";
 import Form from "./components/Form";

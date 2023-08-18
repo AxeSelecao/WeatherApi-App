@@ -16,7 +16,7 @@ function Form() {
     setDate(event.target.value);
   };
   return (
-    <div>
+    <>
       <input
         type="text"
         className="weather__wrapper-input-city pointer"
@@ -43,7 +43,7 @@ function Form() {
           }
         }}
       />
-    </div>
+    </>
   );
 }
 

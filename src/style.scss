@@ -1,8 +1,16 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #app {
   background-image: url("/background.png");
   background-size: 100% 100%;
   min-height: 100vh;
-  padding-top: 80px;
+  padding-top: 50px;
 
   h1 {
     text-align: center;
@@ -20,7 +28,7 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 70px;
+    padding-top: 40px;
 
     .weather__wrapper-input-city {
       background-color: rgba(255, 255, 255, 0.5);
@@ -58,12 +66,12 @@
   }
 
   .weather__day {
-	margin-top: 30px;
-	font-family: sans-serif;
+    margin-top: 30px;
+    font-family: sans-serif;
 
-	p {
-		color: white;
-	}
+    p {
+      color: white;
+    }
   }
 
   .weather__card {
