@@ -4,17 +4,23 @@ import "./style.scss";
 import dateNow from "./services/utils/date/dateNow";
 
 function App() {
-  const cityName = useRef();
-  const date = useRef();
+  const [city, setCity] = useState("");
+  const [date, setDate] = useState("");
 
   const [weatherData, setWeatherData] = useState();
 
-  console.log(dateNow());
+  const handleCityChange = (event) => {
+    console.log(event.target.value);
+    setCity(event.target.value);
+  };
+
+  const handleDateChange = (event) => {
+    console.log(event.target.value);
+    setDate(event.target.value);
+  };
 
   const getPreviousWeatherData = () => {
-    const url = `https://weatherapi-com.p.rapidapi.com/history.json?q=${
-      cityName.current.value
-    }&dt=${date.current.value}&lang=en&end_dt=${dateNow()}`;
+    const url = `https://weatherapi-com.p.rapidapi.com/history.json?q=${city}&dt=${date}&lang=en&end_dt=${dateNow()}`;
     const options = {
       method: "GET",
       headers: {
@@ -28,7 +34,7 @@ function App() {
       .then((data) => {
         console.log(data);
         data.forecast.forecastday.map((day) => {
-          if (day.date == date.current.value) {
+          if (day.date == date) {
             setWeatherData(day);
           }
         });
@@ -37,7 +43,7 @@ function App() {
   };
 
   const getForecast = () => {
-    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${cityName.current.value}&days=3`;
+    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${city}&days=3`;
     const options = {
       method: "GET",
       headers: {
@@ -49,7 +55,7 @@ function App() {
       .then((response) => response.json())
       .then((data) =>
         data.forecast.forecastday.map((day) => {
-          if (day.date == date.current.value) {
+          if (day.date == date) {
             setWeatherData(day);
           }
         })
@@ -62,16 +68,18 @@ function App() {
       <h1>Weather application</h1>
       <div className="weather__wrapper">
         <input
-          className="weather__wrapper-input-city pointer"
-          ref={cityName}
           type="text"
+          className="weather__wrapper-input-city pointer"
           placeholder="Type a city..."
+          onChange={handleCityChange}
+          value={city}
         />
 
         <input
-          className="weather__wrapper-input-date pointer"
-          ref={date}
           type="date"
+          className="weather__wrapper-input-date pointer"
+          onChange={handleDateChange}
+          value={date}
         />
 
         <input
@@ -79,9 +87,9 @@ function App() {
           type="submit"
           value="Send Request"
           onClick={() => {
-            console.log(date.current.value, cityName.current.value);
-            console.log(+Date.now() - +Date.parse(date.current.value));
-            if (+Date.now() - +Date.parse(date.current.value) < 0) {
+            console.log(date, city);
+            console.log(+Date.now() - +Date.parse(date));
+            if (+Date.now() - +Date.parse(date) < 0) {
               getForecast();
             } else {
               getPreviousWeatherData();
@@ -99,7 +107,7 @@ function App() {
                 textAlign: "center",
               }}
             >
-              {cityName.current.value}
+              {city}
             </p>
             <p
               style={{
